@@ -8,3 +8,8 @@ forest with default hyperparameters.
 
 Find out what's going on, why auto-sklearn's performance is so bad, and how to
 fix it.
+
+
+# Explanation
+
+The core of the problem is the encoding done by OneHotEncoder. The OneHotEncoder is meant for use on categorical data. The data it is being applied to is very much not categorical. So it makes sense that the performance is very poor. 
