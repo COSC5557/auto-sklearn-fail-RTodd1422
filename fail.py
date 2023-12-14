@@ -17,9 +17,11 @@ print("RandomForest Accuracy", sklearn.metrics.accuracy_score(y_test, y_hat))
 
 from autosklearn.classification import AutoSklearnClassifier
 
-automl = AutoSklearnClassifier(time_left_for_this_task=1800, resampling_strategy="cv", resampling_strategy_arguments={"folds":10})
+#automl = AutoSklearnClassifier(time_left_for_this_task=300, resampling_strategy="cv", resampling_strategy_arguments={"folds":10})
+automl = AutoSklearnClassifier(time_left_for_this_task=900, include = {'classifier': ["random_forest"]}, exclude=None)
 automl.fit(X_train, y_train)
 y_hat = automl.predict(X_test)
 overfit = automl.predict(X_train)
 print("AutoML Accuracy", sklearn.metrics.accuracy_score(y_test, y_hat))
 print("AutoML Train Accuracy", sklearn.metrics.accuracy_score(y_train, overfit))
+
